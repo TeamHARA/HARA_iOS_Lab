@@ -77,12 +77,12 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
-		E7864B4629D942EA0006FA18 /* SeungHo */ = {
+		E7864B4629D942EA0006FA18 /* Sungho */ = {
 			isa = PBXGroup;
 			children = (
 				E7864B4E29D9437A0006FA18 /* SeongHoRootViewController.swift */,
 			);
-			path = SeungHo;
+			path = Sungho;
 			sourceTree = "<group>";
 		};
 		E7864B4729D942F10006FA18 /* Noori */ = {
@@ -152,7 +152,7 @@
 				E7864B7829D9446B0006FA18 /* Global */,
 				E7864B4929D943090006FA18 /* Damin */,
 				E7864B4729D942F10006FA18 /* Noori */,
-				E7864B4629D942EA0006FA18 /* SeungHo */,
+				E7864B4629D942EA0006FA18 /* Sungho */,
 				E7D31A0829CE017000B8686F /* AppDelegate.swift */,
 				E7D31A0A29CE017000B8686F /* SceneDelegate.swift */,
 				E7D31A0C29CE017000B8686F /* ViewController.swift */,
