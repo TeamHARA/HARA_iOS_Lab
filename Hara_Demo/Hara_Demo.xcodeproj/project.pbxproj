@@ -35,6 +35,7 @@
 		E7864BBF29D948120006FA18 /* UITextField+.swift in Sources */ = {isa = PBXBuildFile; fileRef = E7864BB129D948120006FA18 /* UITextField+.swift */; };
 		E7864BC029D948120006FA18 /* UIColor+.swift in Sources */ = {isa = PBXBuildFile; fileRef = E7864BB229D948120006FA18 /* UIColor+.swift */; };
 		E7864BC129D948120006FA18 /* Adjusted+.swift in Sources */ = {isa = PBXBuildFile; fileRef = E7864BB329D948120006FA18 /* Adjusted+.swift */; };
+		E7B8939129DE682700E49BBF /* HomeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E7B8939029DE682700E49BBF /* HomeView.swift */; };
 		E7D31A0929CE017000B8686F /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = E7D31A0829CE017000B8686F /* AppDelegate.swift */; };
 		E7D31A0B29CE017000B8686F /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = E7D31A0A29CE017000B8686F /* SceneDelegate.swift */; };
 		E7D31A0D29CE017000B8686F /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E7D31A0C29CE017000B8686F /* ViewController.swift */; };
@@ -67,6 +68,7 @@
 		E7864BB129D948120006FA18 /* UITextField+.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UITextField+.swift"; sourceTree = "<group>"; };
 		E7864BB229D948120006FA18 /* UIColor+.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIColor+.swift"; sourceTree = "<group>"; };
 		E7864BB329D948120006FA18 /* Adjusted+.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Adjusted+.swift"; sourceTree = "<group>"; };
+		E7B8939029DE682700E49BBF /* HomeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeView.swift; sourceTree = "<group>"; };
 		E7D31A0529CE017000B8686F /* Hara_Demo.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Hara_Demo.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		E7D31A0829CE017000B8686F /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		E7D31A0A29CE017000B8686F /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -142,6 +144,7 @@
 			isa = PBXGroup;
 			children = (
 				E7864B4A29D943360006FA18 /* DaminRootViewController.swift */,
+				E7B8939029DE682700E49BBF /* HomeView.swift */,
 			);
 			path = Damin;
 			sourceTree = "<group>";
@@ -290,6 +293,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				85825A1929DA904000850131 /* WorryCVC.swift in Sources */,
+				E7B8939129DE682700E49BBF /* HomeView.swift in Sources */,
 				E7864BBB29D948120006FA18 /* UIViewController+.swift in Sources */,
 				E7864BBA29D948120006FA18 /* UIImageView+.swift in Sources */,
 				85825A1329DA901C00850131 /* WorryListModel.swift in Sources */,
