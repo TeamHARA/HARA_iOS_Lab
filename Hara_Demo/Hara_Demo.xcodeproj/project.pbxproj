@@ -10,7 +10,7 @@
 		85825A0F29DA8FDC00850131 /* WorryVM.swift in Sources */ = {isa = PBXBuildFile; fileRef = 85825A0E29DA8FDC00850131 /* WorryVM.swift */; };
 		85825A1329DA901C00850131 /* WorryListModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 85825A1229DA901C00850131 /* WorryListModel.swift */; };
 		85825A1529DA902A00850131 /* WorryListHeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 85825A1429DA902A00850131 /* WorryListHeaderView.swift */; };
-		85825A1729DA903600850131 /* WorryCV.swift in Sources */ = {isa = PBXBuildFile; fileRef = 85825A1629DA903600850131 /* WorryCV.swift */; };
+		85825A1729DA903600850131 /* WorryVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 85825A1629DA903600850131 /* WorryVC.swift */; };
 		85825A1929DA904000850131 /* WorryCVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 85825A1829DA904000850131 /* WorryCVC.swift */; };
 		85825A1C29DA905A00850131 /* TemplateListModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 85825A1B29DA905A00850131 /* TemplateListModel.swift */; };
 		85FA24EF29DA908900E5B023 /* ModalVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 85FA24EE29DA908900E5B023 /* ModalVC.swift */; };
@@ -46,7 +46,7 @@
 		85825A0E29DA8FDC00850131 /* WorryVM.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WorryVM.swift; sourceTree = "<group>"; };
 		85825A1229DA901C00850131 /* WorryListModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WorryListModel.swift; sourceTree = "<group>"; };
 		85825A1429DA902A00850131 /* WorryListHeaderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WorryListHeaderView.swift; sourceTree = "<group>"; };
-		85825A1629DA903600850131 /* WorryCV.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WorryCV.swift; sourceTree = "<group>"; };
+		85825A1629DA903600850131 /* WorryVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WorryVC.swift; sourceTree = "<group>"; };
 		85825A1829DA904000850131 /* WorryCVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WorryCVC.swift; sourceTree = "<group>"; };
 		85825A1B29DA905A00850131 /* TemplateListModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TemplateListModel.swift; sourceTree = "<group>"; };
 		85FA24EE29DA908900E5B023 /* ModalVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ModalVC.swift; sourceTree = "<group>"; };
@@ -104,7 +104,7 @@
 			children = (
 				85825A1229DA901C00850131 /* WorryListModel.swift */,
 				85825A1429DA902A00850131 /* WorryListHeaderView.swift */,
-				85825A1629DA903600850131 /* WorryCV.swift */,
+				85825A1629DA903600850131 /* WorryVC.swift */,
 				85825A1829DA904000850131 /* WorryCVC.swift */,
 			);
 			path = Worry;
@@ -315,7 +315,7 @@
 				E7864BBF29D948120006FA18 /* UITextField+.swift in Sources */,
 				E7D31A0B29CE017000B8686F /* SceneDelegate.swift in Sources */,
 				E7864BBD29D948120006FA18 /* UIButton+.swift in Sources */,
-				85825A1729DA903600850131 /* WorryCV.swift in Sources */,
+				85825A1729DA903600850131 /* WorryVC.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

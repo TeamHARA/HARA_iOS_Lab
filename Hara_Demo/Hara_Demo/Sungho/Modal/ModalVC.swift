@@ -120,16 +120,20 @@ extension ModalVC: UICollectionViewDelegateFlowLayout {
         templateWithCategory = []
         templateIndex = indexPath.row
         
-        /// worryList의 templateId와 같은 고민을 화면에 띄어줍니다.
-        for i in 0...worryVM.worryList.count-1{
-            if templateIndex == worryVM.worryList[i].templateId{
-                templateWithCategory.append(worryVM.worryList[i])
-            }
-        }
         /// 0. 전체 템플릿 보기를 클릭 시에는 모든 고민을 화면에 띄어줍니다.
         if templateIndex == 0 {
             templateWithCategory = worryVM.worryList
         }
+        
+        else {
+            /// worryList의 templateId와 같은 고민을 화면에 띄어줍니다.
+            for i in 0...worryVM.worryList.count-1{
+                if templateIndex == worryVM.worryList[i].templateId{
+                    templateWithCategory.append(worryVM.worryList[i])
+                }
+            }
+        }
+        
         print("templateIndex=\(templateIndex)")
         
         self.dismiss(animated: true, completion: nil)

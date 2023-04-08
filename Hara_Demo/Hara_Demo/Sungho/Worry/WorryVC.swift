@@ -10,7 +10,7 @@ import SnapKit
 import Then
 import Combine
 
-class WorryCV: UIViewController, RefreshListDelegate{
+class WorryVC: UIViewController, RefreshListDelegate{
     
     // MARK: - Properties
     var worryVM: WorryVM = WorryVM()
@@ -59,6 +59,9 @@ class WorryCV: UIViewController, RefreshListDelegate{
         self.registerCV()
         self.pressBtn()
         
+        // delegate 권한을 부여해줍니다.
+        modalVC.refreshListDelegate = self
+        
         /// modalVC가 dismiss되는 것을 notificationCenter를 통해 worryVC가 알 수 있게 해줍니다.
         NotificationCenter.default.addObserver(
             self,
@@ -92,13 +95,9 @@ class WorryCV: UIViewController, RefreshListDelegate{
     
     func pressBtn(){
         sortHeaderView.sortBtn.press {
-            let modalVC = ModalVC()
-            modalVC.modalPresentationStyle = .pageSheet
+            self.modalVC.modalPresentationStyle = .pageSheet
             
-            /// 클릭될때마다 delegate를 새로 받아올 수 있게 하여 권한을 계속 새롭게 부여해줍니다.
-            modalVC.refreshListDelegate = self
-            
-            if let sheet = modalVC.sheetPresentationController {
+            if let sheet = self.modalVC.sheetPresentationController {
                 
                 /// 지원할 크기 지정
                 /// 크기 늘리고 싶으면 뒤에 ", .large()" 추가
@@ -111,12 +110,12 @@ class WorryCV: UIViewController, RefreshListDelegate{
                 /// 배경 흐리게 할 시에는 sheet가 올라왔을 때 배경 클릭해도 sheet 안 사라짐
                 //                sheet.largestUndimmedDetentIdentifier = .medium
             }
-            self.present(modalVC, animated: true)
+            self.present(self.modalVC, animated: true)
         }
     }
 }
 // MARK: - 뷰모델 관련
-extension WorryCV{
+extension WorryVC{
     /// 뷰모델의 데이터를 뷰컨의 리스트 데이터와 연동
     fileprivate func setBindings(){
         print("ViewController - setBindings()")
@@ -129,7 +128,7 @@ extension WorryCV{
 }
 
 // MARK: - Layout
-extension WorryCV{
+extension WorryVC{
     private func setLayout(){
         view.backgroundColor = .black
         view.addSubviews([titleLabel, templateBtn, sortHeaderView, worryListCV])
@@ -158,7 +157,7 @@ extension WorryCV{
 }
 
 // MARK: - UICollectionDelegate
-extension WorryCV: UICollectionViewDelegateFlowLayout {
+extension WorryVC: UICollectionViewDelegateFlowLayout {
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
         return CGSize(width: 164.adjustedW, height: 164.adjustedW)
     }
@@ -178,7 +177,7 @@ extension WorryCV: UICollectionViewDelegateFlowLayout {
 
 // MARK: - UICollectionViewDataSource
 
-extension WorryCV: UICollectionViewDataSource {
+extension WorryVC: UICollectionViewDataSource {
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         return worryList.count
     }
