@@ -8,7 +8,7 @@
 import UIKit
 import Then
 
-// safeArea 값을 가져오기 위한 익스텐션
+// safeAreaInset 값을 가져오기 위한 익스텐션
 extension UIApplication {
     static var safeAreaInset: UIEdgeInsets  {
         let scene = UIApplication.shared.connectedScenes.first as? UIWindowScene
@@ -30,6 +30,7 @@ class DaminRootViewController: UIViewController {
     // MARK: - Function
     func setViews() {
         for _ in 0...9 {
+            // 뷰의 safeAreaInset을 넘겨주고 HomeView의 인스턴스 생성
             let view = HomeView(UIApplication.safeAreaInset)
             self.view.addSubview(view)
             views.append(view)
