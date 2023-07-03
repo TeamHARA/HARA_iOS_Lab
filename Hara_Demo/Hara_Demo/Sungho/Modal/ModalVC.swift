@@ -11,7 +11,7 @@ import Then
 import Combine
 
 protocol RefreshListDelegate: AnyObject {
-    func refreshList(list: [WorryListModel])
+    func refreshList(templateTitle: String, list: [WorryListModel])
 }
 
 class ModalVC: UIViewController {
@@ -43,7 +43,7 @@ class ModalVC: UIViewController {
         view.dataSource = self
         return view
     }()
-        
+    
     // MARK: - Constants
     final let templateListInset: UIEdgeInsets = UIEdgeInsets(top: 30, left: 12.adjustedW, bottom: 20, right: 12.adjustedW)
     final let lineSpacing: CGFloat = 8
@@ -116,6 +116,18 @@ extension ModalVC: UICollectionViewDelegateFlowLayout {
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         print("click index=\(indexPath.row)")
         
+        // 기존의 선택되었던 Cell의 디자인을 초기화한다.
+        if let previousCell = collectionView.cellForItem(at: IndexPath(row: templateIndex, section: 0)) as? TemplateCVC {
+            previousCell.templateCell.layer.borderColor = UIColor.systemGray.cgColor
+            previousCell.checkIcon.isHidden = true
+        }
+        
+        // 새롭게 선택된 Cell의 디자인을 변경한다. 
+        if let currentCell = collectionView.cellForItem(at: indexPath) as? TemplateCVC {
+            currentCell.templateCell.layer.borderColor = 0xF6CE66.color.cgColor
+            currentCell.checkIcon.isHidden = false
+        }
+        
         templateWithCategory = []
         templateIndex = indexPath.row
         
@@ -138,7 +150,7 @@ extension ModalVC: UICollectionViewDelegateFlowLayout {
         self.dismiss(animated: true, completion: nil)
         
         /// category에 해당하는 고민들을 담은 리스트를 worryCV로 보내주어, WorryVM의 List를 변경할 수 있게 해줍니다.
-        refreshListDelegate?.refreshList(list: templateWithCategory)
+        refreshListDelegate?.refreshList(templateTitle: worryVM.templateList[templateIndex].templateTitle, list: templateWithCategory)
         print("send the array=\(templateWithCategory)")
     }
 }
@@ -154,7 +166,7 @@ extension ModalVC: UICollectionViewDataSource {
         guard let cell = collectionView.dequeueReusableCell(
             withReuseIdentifier: TemplateCVC.classIdentifier, for: indexPath)
                 as? TemplateCVC else { return UICollectionViewCell() }
-        cell.dataBind(model: templateList[indexPath.item])
+        cell.dataBind(model: templateList[indexPath.item], indexPath: indexPath)
         return cell
     }
 }
