@@ -14,7 +14,6 @@ protocol RefreshListDelegate: AnyObject {
     func refreshList(list: [WorryListModel])
 }
 
-
 class ModalVC: UIViewController {
     
     // MARK: - Properties
