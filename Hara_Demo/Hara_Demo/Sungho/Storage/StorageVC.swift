@@ -20,9 +20,9 @@ class StorageVC: UIViewController, RefreshListDelegate{
     var disposalbleBag = Set<AnyCancellable>()
     
     private let titleLabel = UILabel().then{
-        $0.text = "과거의 고민"
+        $0.text = "보석고민함"
         $0.textColor = .white
-        $0.font = .systemFont(ofSize: 26, weight: .bold)
+        $0.font = .systemFont(ofSize: 20, weight: .medium)
     }
     
     private let templateBtn = UIButton().then{
@@ -46,9 +46,9 @@ class StorageVC: UIViewController, RefreshListDelegate{
     }()
     
     // MARK: - Constants
-    final let worryListInset: UIEdgeInsets = UIEdgeInsets(top: 25, left: 16.adjustedW, bottom: 100, right: 16.adjustedW)
-    final let interItemSpacing: CGFloat = 15.adjustedW
-    final let lineSpacing: CGFloat = 15.adjustedW
+    final let worryListInset: UIEdgeInsets = UIEdgeInsets(top: 12, left: 16.adjustedW, bottom: 100, right: 16.adjustedW)
+    final let interItemSpacing: CGFloat = 12.adjustedW
+    final let lineSpacing: CGFloat = 12.adjustedW
     
     // MARK: - Life Cycles
     override func viewDidLoad() {
@@ -82,8 +82,9 @@ class StorageVC: UIViewController, RefreshListDelegate{
         }
     }
     
-    func refreshList(list: [WorryListModel]) {
+    func refreshList(templateTitle: String, list: [WorryListModel]) {
         worryVM.worryList = list
+        sortHeaderView.sortBtn.setTitle(templateTitle, for: .normal)
         print("delegate")
     }
     
@@ -131,27 +132,27 @@ extension StorageVC{
 // MARK: - Layout
 extension StorageVC{
     private func setLayout(){
-        view.backgroundColor = .black
+        view.backgroundColor = 0x1E2227.color
         view.addSubviews([titleLabel, templateBtn, sortHeaderView, worryListCV])
         
         titleLabel.snp.makeConstraints{
-            $0.top.equalTo(self.view.safeAreaLayoutGuide).offset(40.adjustedH)
-            $0.leading.equalTo(self.view.safeAreaLayoutGuide).offset(16.adjustedW)
+            $0.top.equalTo(self.view.safeAreaLayoutGuide).offset(24.adjustedW)
+            $0.centerX.equalToSuperview()
         }
         
         templateBtn.snp.makeConstraints{
-            $0.top.equalTo(self.view.safeAreaLayoutGuide).offset(40.adjustedH)
+            $0.top.equalTo(self.view.safeAreaLayoutGuide).offset(24.adjustedH)
             $0.trailing.equalTo(self.view.safeAreaLayoutGuide).offset(-16.adjustedW)
         }
         
         sortHeaderView.snp.makeConstraints{
             $0.top.equalTo(templateBtn.snp.bottom)
             $0.leading.trailing.equalTo(self.view.safeAreaLayoutGuide)
-            $0.height.equalTo(40)
+            $0.height.equalTo(75.adjustedW)
         }
         
         worryListCV.snp.makeConstraints{
-            $0.top.equalTo(sortHeaderView.snp.bottom).offset(20)
+            $0.top.equalTo(sortHeaderView.snp.bottom).offset(12)
             $0.leading.trailing.bottom.equalTo(self.view.safeAreaLayoutGuide)
         }
     }
@@ -160,7 +161,7 @@ extension StorageVC{
 // MARK: - UICollectionDelegate
 extension StorageVC: UICollectionViewDelegateFlowLayout {
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
-        return CGSize(width: 164.adjustedW, height: 164.adjustedW)
+        return CGSize(width: 165.adjustedW, height: 165.adjustedW)
     }
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumLineSpacingForSectionAt section: Int) -> CGFloat {

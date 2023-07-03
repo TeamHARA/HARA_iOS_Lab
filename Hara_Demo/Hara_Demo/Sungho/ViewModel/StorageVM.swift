@@ -12,14 +12,16 @@ import Combine
 class StorageVM: ObservableObject{
     
     @Published var worryList: [WorryListModel] = [
-        WorryListModel(templateId: 1, templateTitle: "할 일", title: "해라 릴리즈", startDate: "23.02.01", endDate: "23.02.02"),
-        WorryListModel(templateId: 2, templateTitle: "학업", title: "이번 학기 학점", startDate: "23.02.02", endDate: "23.02.04"),
-        WorryListModel(templateId: 3, templateTitle: "일상", title: "집에 갈까 말까", startDate: "23.02.03", endDate: "23.02.06"),
-        WorryListModel(templateId: 2, templateTitle: "학업", title: "수업 드랍할까 말까?", startDate: "23.02.04", endDate: "23.03.08"),
-        WorryListModel(templateId: 4, templateTitle: "진로", title: "머 해먹고 살지,,?", startDate: "23.02.05", endDate: "23.04.10"),
-        WorryListModel(templateId: 3, templateTitle: "일상", title: "저녁 뭐먹을까?", startDate: "23.03.03", endDate: "23.04.06"),
-        WorryListModel(templateId: 1, templateTitle: "할 일", title: "컴시이실 공부하기", startDate: "23.03.31", endDate: "23.04.20"),
-        WorryListModel(templateId: 1, templateTitle: "할 일", title: "데이터 엔지니어링 API", startDate: "23.03.31", endDate: "23.04.20")
+        WorryListModel(templateId: 1, templateTitle: "할 일", image: UIImage(named: "gem_pink_m")!, title: "해라 릴리즈", Date: "23.02.01~23.02.02"),
+        WorryListModel(templateId: 2, templateTitle: "학업", image: UIImage(named: "gem_orange_m")!, title: "이번 학기 학점", Date: "23.02.02~23.02.04"),
+        WorryListModel(templateId: 3, templateTitle: "일상", image: UIImage(named: "gem_blue_m")!, title: "집에 갈까 말까", Date: "23.02.03~23.02.06"),
+        WorryListModel(templateId: 2, templateTitle: "학업", image: UIImage(named: "gem_orange_m")!, title: "수업 드랍할까 말까?", Date: "23.02.04~23.02.08"),
+        WorryListModel(templateId: 4, templateTitle: "진로", image: UIImage(named: "gemstone_green_m")!, title: "머 해먹고 살지,,?", Date: "23.02.05~23.04.10"),
+        WorryListModel(templateId: 3, templateTitle: "일상", image: UIImage(named: "gem_blue_m")!, title: "저녁 뭐먹을까?", Date: "23.03.03~23.04.06"),
+        WorryListModel(templateId: 1, templateTitle: "할 일", image: UIImage(named: "gem_pink_m")!, title: "컴시이실 공부하기", Date: "23.03.31~23.04.20"),
+        WorryListModel(templateId: 1, templateTitle: "할 일", image: UIImage(named: "gem_pink_m")!, title: "컴시이실 공부하기", Date: "23.04.02~23.04.30"),
+        WorryListModel(templateId: 5, templateTitle: "단 하나의 목표", image: UIImage(named: "gem_yellow_m")!, title: "캐라 릴리즈", Date: "23.06.30-~23.07.20"),
+        WorryListModel(templateId: 6, templateTitle: "땡스투 새겨보기", image: UIImage(named: "gem_red_m")!, title: "회사 인턴", Date: "23.07.17-~23.07.30")
     ]
     
     @Published var templateList: [TemplateListModel] = [

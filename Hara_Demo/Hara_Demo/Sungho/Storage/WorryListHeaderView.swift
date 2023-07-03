@@ -14,19 +14,23 @@ class WorryListHeaderView: UICollectionReusableView {
     
     // MARK: - UI Components
     let numLabel = UILabel().then {
-        $0.text = "총 4개"
+        $0.text = ""
         $0.textColor = .white
-        $0.font = .systemFont(ofSize: 14.adjustedW, weight: .bold)
+        $0.font = .systemFont(ofSize: 14.adjustedW, weight: .light)
     }
     
     let sortBtn = UIButton().then {
+        $0.backgroundColor = 0x30363D.color
+        $0.layer.cornerRadius = 10
+        $0.titleLabel?.font = .systemFont(ofSize: 14, weight: .medium)
+        $0.setTitle("모든 보석 보기", for: .normal)
+        $0.setTitleColor(0xFFE5A3.color, for: .normal)
+    }
+    
+    private let toggleBtn = UIImageView().then {
+        $0.image = UIImage(named: "toggle_down")
+        $0.contentMode = .scaleToFill
         $0.backgroundColor = .clear
-        $0.layer.cornerRadius = 4
-        $0.layer.borderWidth = 1.5
-        $0.layer.borderColor = UIColor.white.cgColor
-        $0.titleLabel?.font = .systemFont(ofSize: 14, weight: .bold)
-        $0.setTitle("전체", for: .normal)
-        $0.setTitleColor(.white, for: .normal)
     }
     
     // MARK: - View Life Cycle
@@ -44,18 +48,25 @@ class WorryListHeaderView: UICollectionReusableView {
 extension WorryListHeaderView{
     func setLayout(){
         self.backgroundColor = .clear
-        self.addSubViews([numLabel, sortBtn])
-        
-        numLabel.snp.makeConstraints{
-            $0.centerY.equalTo(sortBtn)
-            $0.leading.equalToSuperview().offset(16.adjustedW)
-        }
+        self.addSubViews([sortBtn, numLabel, toggleBtn])
         
         sortBtn.snp.makeConstraints{
             $0.top.equalToSuperview().offset(24)
+            $0.leading.equalToSuperview().offset(16.adjustedW)
             $0.trailing.equalToSuperview().offset(-16.adjustedW)
-            $0.width.equalTo(82.adjustedW)
-            $0.height.equalTo(24.adjustedW)
+            $0.height.equalTo(32.adjustedW)
+        }
+        
+        numLabel.snp.makeConstraints{
+            $0.top.equalTo(sortBtn.snp.bottom).offset(16)
+            $0.leading.equalToSuperview().offset(16.adjustedW)
+        }
+        
+        toggleBtn.snp.makeConstraints{
+            $0.trailing.equalToSuperview().offset(-36.adjustedW)
+            $0.centerY.equalTo(sortBtn.snp.centerY)
+            $0.width.equalTo(12.adjustedW)
+            $0.height.equalTo(6.adjustedW)
         }
     }
 }

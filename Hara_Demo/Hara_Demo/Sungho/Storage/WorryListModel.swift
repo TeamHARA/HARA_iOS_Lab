@@ -5,12 +5,12 @@
 //  Created by saint on 2023/03/31.
 //
 
-import Foundation
+import UIKit
 
 struct WorryListModel{
     let templateId: Int
     let templateTitle: String
+    let image: UIImage
     let title: String
-    let startDate: String
-    let endDate: String
+    let Date: String
 }
