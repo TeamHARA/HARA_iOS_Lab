@@ -64,8 +64,8 @@ class ModalVC: UIViewController {
     
     // MARK: - Functions
     private func registerCV() {
-        templateListCV.register(TemplateCVC.self,
-                                forCellWithReuseIdentifier: TemplateCVC.classIdentifier)
+        templateListCV.register(StorageTemplateCVC.self,
+                                forCellWithReuseIdentifier: StorageTemplateCVC.classIdentifier)
     }
 }
 
@@ -117,13 +117,13 @@ extension ModalVC: UICollectionViewDelegateFlowLayout {
         print("click index=\(indexPath.row)")
         
         // 기존의 선택되었던 Cell의 디자인을 초기화한다.
-        if let previousCell = collectionView.cellForItem(at: IndexPath(row: templateIndex, section: 0)) as? TemplateCVC {
+        if let previousCell = collectionView.cellForItem(at: IndexPath(row: templateIndex, section: 0)) as? StorageTemplateCVC {
             previousCell.templateCell.layer.borderColor = UIColor.systemGray.cgColor
             previousCell.checkIcon.isHidden = true
         }
         
         // 새롭게 선택된 Cell의 디자인을 변경한다. 
-        if let currentCell = collectionView.cellForItem(at: indexPath) as? TemplateCVC {
+        if let currentCell = collectionView.cellForItem(at: indexPath) as? StorageTemplateCVC {
             currentCell.templateCell.layer.borderColor = 0xF6CE66.color.cgColor
             currentCell.checkIcon.isHidden = false
         }
@@ -164,8 +164,8 @@ extension ModalVC: UICollectionViewDataSource {
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         guard let cell = collectionView.dequeueReusableCell(
-            withReuseIdentifier: TemplateCVC.classIdentifier, for: indexPath)
-                as? TemplateCVC else { return UICollectionViewCell() }
+            withReuseIdentifier: StorageTemplateCVC.classIdentifier, for: indexPath)
+                as? StorageTemplateCVC else { return UICollectionViewCell() }
         cell.dataBind(model: templateList[indexPath.item], indexPath: indexPath)
         return cell
     }

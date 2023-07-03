@@ -9,7 +9,7 @@ import UIKit
 import SnapKit
 import Then
 
-class TemplateCVC: UICollectionViewCell {
+class StorageTemplateCVC: UICollectionViewCell {
     
     let templateCell = UIView().then{
         $0.backgroundColor = .clear
@@ -49,7 +49,7 @@ class TemplateCVC: UICollectionViewCell {
     }
 }
 
-extension TemplateCVC{
+extension StorageTemplateCVC{
     
     // MARK: - Layout
     private func setLayout() {

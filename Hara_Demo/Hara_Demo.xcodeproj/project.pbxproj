@@ -17,7 +17,7 @@
 		85825A1929DA904000850131 /* StorageCVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 85825A1829DA904000850131 /* StorageCVC.swift */; };
 		85825A1C29DA905A00850131 /* TemplateListModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 85825A1B29DA905A00850131 /* TemplateListModel.swift */; };
 		85FA24EF29DA908900E5B023 /* ModalVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 85FA24EE29DA908900E5B023 /* ModalVC.swift */; };
-		85FA24F129DA909700E5B023 /* TemplateCVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 85FA24F029DA909700E5B023 /* TemplateCVC.swift */; };
+		85FA24F129DA909700E5B023 /* StorageTemplateCVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 85FA24F029DA909700E5B023 /* StorageTemplateCVC.swift */; };
 		E7864B4B29D943360006FA18 /* DaminRootViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E7864B4A29D943360006FA18 /* DaminRootViewController.swift */; };
 		E7864B4D29D943520006FA18 /* NooriRootViewControllerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E7864B4C29D943520006FA18 /* NooriRootViewControllerViewController.swift */; };
 		E7864B6F29D944030006FA18 /* SnapKit in Frameworks */ = {isa = PBXBuildFile; productRef = E7864B6E29D944030006FA18 /* SnapKit */; };
@@ -55,7 +55,7 @@
 		85825A1829DA904000850131 /* StorageCVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StorageCVC.swift; sourceTree = "<group>"; };
 		85825A1B29DA905A00850131 /* TemplateListModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TemplateListModel.swift; sourceTree = "<group>"; };
 		85FA24EE29DA908900E5B023 /* ModalVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ModalVC.swift; sourceTree = "<group>"; };
-		85FA24F029DA909700E5B023 /* TemplateCVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TemplateCVC.swift; sourceTree = "<group>"; };
+		85FA24F029DA909700E5B023 /* StorageTemplateCVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StorageTemplateCVC.swift; sourceTree = "<group>"; };
 		E7864B4A29D943360006FA18 /* DaminRootViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DaminRootViewController.swift; sourceTree = "<group>"; };
 		E7864B4C29D943520006FA18 /* NooriRootViewControllerViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NooriRootViewControllerViewController.swift; sourceTree = "<group>"; };
 		E7864BA629D948120006FA18 /* CALayer+.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "CALayer+.swift"; sourceTree = "<group>"; };
@@ -108,6 +108,7 @@
 		85825A1129DA901000850131 /* Storage */ = {
 			isa = PBXGroup;
 			children = (
+				85825A1A29DA904700850131 /* Modal */,
 				85825A1229DA901C00850131 /* WorryListModel.swift */,
 				85825A1429DA902A00850131 /* WorryListHeaderView.swift */,
 				85825A1629DA903600850131 /* StorageVC.swift */,
@@ -121,7 +122,7 @@
 			children = (
 				85825A1B29DA905A00850131 /* TemplateListModel.swift */,
 				85FA24EE29DA908900E5B023 /* ModalVC.swift */,
-				85FA24F029DA909700E5B023 /* TemplateCVC.swift */,
+				85FA24F029DA909700E5B023 /* StorageTemplateCVC.swift */,
 			);
 			path = Modal;
 			sourceTree = "<group>";
@@ -129,7 +130,6 @@
 		E7864B4629D942EA0006FA18 /* Sungho */ = {
 			isa = PBXGroup;
 			children = (
-				85825A1A29DA904700850131 /* Modal */,
 				85825A1129DA901000850131 /* Storage */,
 				85825A1029DA8FE100850131 /* ViewModel */,
 				854A6B032A52C83F000EBE1C /* WriteVC.swift */,
@@ -312,7 +312,7 @@
 				E7864B4B29D943360006FA18 /* DaminRootViewController.swift in Sources */,
 				E7D31A0D29CE017000B8686F /* TabBarController.swift in Sources */,
 				E7864BB929D948120006FA18 /* UIStackView+.swift in Sources */,
-				85FA24F129DA909700E5B023 /* TemplateCVC.swift in Sources */,
+				85FA24F129DA909700E5B023 /* StorageTemplateCVC.swift in Sources */,
 				E7864BB829D948120006FA18 /* String+.swift in Sources */,
 				85825A1C29DA905A00850131 /* TemplateListModel.swift in Sources */,
 				E7864BB529D948120006FA18 /* NSObject+.swift in Sources */,
