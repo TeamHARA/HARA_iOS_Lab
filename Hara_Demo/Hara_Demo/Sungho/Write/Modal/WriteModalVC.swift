@@ -1,8 +1,8 @@
 //
 //  ModalVC.swift
-//  MVVM-HARA
+//  Hara_Demo
 //
-//  Created by saint on 2023/04/01.
+//  Created by saint on 2023/07/04.
 //
 
 import UIKit
@@ -10,24 +10,19 @@ import SnapKit
 import Then
 import Combine
 
-protocol RefreshListDelegate: AnyObject {
-    func refreshList(templateTitle: String, list: [WorryListModel])
+protocol TemplageTitleDelegate: AnyObject {
+    func sendTitle(templateTitle: String)
 }
 
-class ModalVC: UIViewController {
+class WriteModalVC: UIViewController {
     
     // MARK: - Properties
-    var worryVM: StorageVM = StorageVM()
+    var worryVM: ViewModel = ViewModel()
     
     var templateList: [TemplateListModel] = []
-    /// 데이터를 전달하기 위한 클로저 선언
-    var completionHandler: (([WorryListModel]) -> [WorryListModel])?
-    
-    /// category에 맞는 컬렉션뷰를 화면에 보여주기 위한 배열
-    var templateWithCategory: [WorryListModel] = []
     var disposalbleBag = Set<AnyCancellable>()
     
-    weak var refreshListDelegate: RefreshListDelegate?
+    weak var sendTitleDelegate: TemplageTitleDelegate?
     
     private var templateIndex: Int = 0
     
@@ -64,13 +59,13 @@ class ModalVC: UIViewController {
     
     // MARK: - Functions
     private func registerCV() {
-        templateListCV.register(StorageTemplateCVC.self,
-                                forCellWithReuseIdentifier: StorageTemplateCVC.classIdentifier)
+        templateListCV.register(WriteModalCVC.self,
+                                forCellWithReuseIdentifier: WriteModalCVC.classIdentifier)
     }
 }
 
 // MARK: - Layout
-extension ModalVC{
+extension WriteModalVC{
     
     private func setLayout(){
         view.backgroundColor = 0x1E2227.color
@@ -85,7 +80,7 @@ extension ModalVC{
 
 
 // MARK: - 뷰모델 관련
-extension ModalVC{
+extension WriteModalVC{
     
     /// 뷰모델의 데이터를 뷰컨의 리스트 데이터와 연동
     fileprivate func setBindings(){
@@ -99,7 +94,7 @@ extension ModalVC{
 
 // MARK: - UICollectionDelegate
 
-extension ModalVC: UICollectionViewDelegateFlowLayout {
+extension WriteModalVC: UICollectionViewDelegateFlowLayout {
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
         return CGSize(width: 352.adjustedW, height: 72.adjustedW)
     }
@@ -117,56 +112,44 @@ extension ModalVC: UICollectionViewDelegateFlowLayout {
         print("click index=\(indexPath.row)")
         
         // 기존의 선택되었던 Cell의 디자인을 초기화한다.
-        if let previousCell = collectionView.cellForItem(at: IndexPath(row: templateIndex, section: 0)) as? StorageTemplateCVC {
+        if let previousCell = collectionView.cellForItem(at: IndexPath(row: templateIndex, section: 0)) as? WriteModalCVC {
             previousCell.templateCell.layer.borderColor = UIColor.systemGray.cgColor
             previousCell.checkIcon.isHidden = true
         }
         
-        // 새롭게 선택된 Cell의 디자인을 변경한다. 
-        if let currentCell = collectionView.cellForItem(at: indexPath) as? StorageTemplateCVC {
+        // 새롭게 선택된 Cell의 디자인을 변경한다.
+        if let currentCell = collectionView.cellForItem(at: indexPath) as? WriteModalCVC {
             currentCell.templateCell.layer.borderColor = 0xF6CE66.color.cgColor
             currentCell.checkIcon.isHidden = false
         }
         
-        templateWithCategory = []
         templateIndex = indexPath.row
-        
-        /// 0. 전체 템플릿 보기를 클릭 시에는 모든 고민을 화면에 띄어줍니다.
-        if templateIndex == 0 {
-            templateWithCategory = worryVM.worryList
-        }
-        
-        else {
-            /// worryList의 templateId와 같은 고민을 화면에 띄어줍니다.
-            for i in 0...worryVM.worryList.count-1{
-                if templateIndex == worryVM.worryList[i].templateId{
-                    templateWithCategory.append(worryVM.worryList[i])
-                }
-            }
-        }
         
         print("templateIndex=\(templateIndex)")
         
         self.dismiss(animated: true, completion: nil)
         
-        /// category에 해당하는 고민들을 담은 리스트를 worryCV로 보내주어, WorryVM의 List를 변경할 수 있게 해줍니다.
-        refreshListDelegate?.refreshList(templateTitle: worryVM.templateList[templateIndex].templateTitle, list: templateWithCategory)
-        print("send the array=\(templateWithCategory)")
+        /// 선택한 카테고리의 종류를 WriteVC로 보내줌으로써 화면에 선택된 템플릿이 무엇인지를 알려줍니다.
+        /// '모든 보석 보기' cell은 포함하면 안되므로, 그 다음 셀의 제목을 첫번째 제목으로 하기 위해 +1을 해줍니다.
+        sendTitleDelegate?.sendTitle(templateTitle: worryVM.templateList[templateIndex + 1].templateTitle)
     }
 }
 
 // MARK: - UICollectionViewDataSource
 
-extension ModalVC: UICollectionViewDataSource {
+extension WriteModalVC: UICollectionViewDataSource {
+    /// '모든 보석 보기' cell은 제외해야 하기에 -1을 해줍니다.
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return templateList.count
+        return templateList.count - 1
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         guard let cell = collectionView.dequeueReusableCell(
-            withReuseIdentifier: StorageTemplateCVC.classIdentifier, for: indexPath)
-                as? StorageTemplateCVC else { return UICollectionViewCell() }
-        cell.dataBind(model: templateList[indexPath.item], indexPath: indexPath)
+            withReuseIdentifier: WriteModalCVC.classIdentifier, for: indexPath)
+                as? WriteModalCVC else { return UICollectionViewCell() }
+        /// '모든 보석 보기' cell은 포함하면 안되므로, 그 다음 셀의 제목을 첫번째 제목으로 하기 위해 +1을 해줍니다.
+        cell.dataBind(model: templateList[indexPath.item + 1], indexPath: indexPath)
         return cell
     }
 }
+

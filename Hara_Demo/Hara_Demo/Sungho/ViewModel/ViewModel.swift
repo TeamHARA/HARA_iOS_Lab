@@ -9,7 +9,7 @@ import UIKit
 import Combine
 
 // 뷰 모델로써 데이터의 상태를 가지고 있음
-class StorageVM: ObservableObject{
+class ViewModel: ObservableObject{
     
     @Published var worryList: [WorryListModel] = [
         WorryListModel(templateId: 1, templateTitle: "할 일", image: UIImage(named: "gem_pink_m")!, title: "해라 릴리즈", Date: "23.02.01~23.02.02"),

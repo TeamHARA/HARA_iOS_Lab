@@ -13,8 +13,8 @@ import Combine
 class StorageVC: UIViewController, RefreshListDelegate{
     
     // MARK: - Properties
-    var worryVM: StorageVM = StorageVM()
-    var modalVC = ModalVC()
+    var worryVM: ViewModel = ViewModel()
+    var modalVC = StorageModalVC()
     
     var worryList: [WorryListModel] = []
     var disposalbleBag = Set<AnyCancellable>()

@@ -10,7 +10,13 @@ import SnapKit
 import Then
 import SwiftyColor
 
-class WriteVC: UIViewController {
+class WriteVC: UIViewController, TemplageTitleDelegate{
+    
+    func sendTitle(templateTitle: String) {
+        self.templateTitle.text = templateTitle
+    }
+    
+    private let writeModalVC = WriteModalVC()
     
     private let closeBtn = UIButton().then {
         $0.setBackgroundImage(UIImage(named: "icn_back"), for: .normal)
@@ -35,9 +41,10 @@ class WriteVC: UIViewController {
         $0.font = .systemFont(ofSize: 16.adjustedW, weight: .medium)
     }
     
-    private let dropdownBtn = UIButton().then {
-        $0.setBackgroundImage(UIImage(named: "icn_drop_down"), for: .normal)
+    private let dropdownImg = UIImageView().then {
+        $0.image = UIImage(named: "icn_drop_down")
         $0.contentMode = .scaleAspectFit
+        $0.backgroundColor = .clear
     }
     
     private let underLine = UIView().then {
@@ -89,6 +96,7 @@ class WriteVC: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        writeModalVC.sendTitleDelegate = self
         setLayout()
         pressBtn()
     }
@@ -98,6 +106,26 @@ class WriteVC: UIViewController {
         closeBtn.press { [self] in
             self.dismiss(animated: true)
         }
+        
+        templateBtn.press {
+            self.writeModalVC.modalPresentationStyle = .pageSheet
+            
+            if let sheet = self.writeModalVC.sheetPresentationController {
+                
+                /// 지원할 크기 지정
+                /// 크기 늘리고 싶으면 뒤에 ", .large()" 추가
+                /// 줄이려면 .medium()
+                sheet.detents = [.large()]
+                
+                /// 시트 상단에 그래버 표시 (기본 값은 false)
+                sheet.prefersGrabberVisible = true
+                
+                /// 뒤 배경 흐리게 제거 (기본 값은 모든 크기에서 배경 흐리게 됨)
+                /// 배경 흐리게 할 시에는 sheet가 올라왔을 때 배경 클릭해도 sheet 안 사라짐
+                //                sheet.largestUndimmedDetentIdentifier = .medium
+            }
+            self.present(self.writeModalVC, animated: true)
+        }
     }
 }
 
@@ -106,7 +134,7 @@ extension WriteVC{
     private func setLayout(){
         view.backgroundColor = 0x1E2227.color
         view.addSubviews([closeBtn, completeBtn, templateBtn, templateTitle])
-        templateBtn.addSubviews([templateTitle, dropdownBtn, underLine])
+        templateBtn.addSubviews([templateTitle, dropdownImg, underLine])
         view.addSubviews([worryTitleLabel, worryTitleTextField, worryContentLabel])
         view.addSubviews([baseImage, introTitle, introDetail])
         
@@ -134,7 +162,7 @@ extension WriteVC{
             $0.centerY.equalToSuperview()
         }
         
-        dropdownBtn.snp.makeConstraints{
+        dropdownImg.snp.makeConstraints{
             $0.trailing.equalToSuperview().offset(-16.adjustedW)
             $0.centerY.equalToSuperview()
             $0.height.width.equalTo(24.adjustedW)
