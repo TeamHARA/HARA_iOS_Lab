@@ -18,7 +18,7 @@ protocol RefreshListDelegate: AnyObject {
 class ModalVC: UIViewController {
     
     // MARK: - Properties
-    var worryVM: WorryVM = WorryVM()
+    var worryVM: StorageVM = StorageVM()
     
     var templateList: [TemplateListModel] = []
     /// 데이터를 전달하기 위한 클로저 선언
@@ -46,7 +46,7 @@ class ModalVC: UIViewController {
     }()
         
     // MARK: - Constants
-    final let templateListInset: UIEdgeInsets = UIEdgeInsets(top: 30, left: 16.adjustedW, bottom: 20, right: 16.adjustedW)
+    final let templateListInset: UIEdgeInsets = UIEdgeInsets(top: 30, left: 12.adjustedW, bottom: 20, right: 12.adjustedW)
     final let lineSpacing: CGFloat = 8
     
     // MARK: - Life Cycles
@@ -74,7 +74,7 @@ class ModalVC: UIViewController {
 extension ModalVC{
     
     private func setLayout(){
-        view.backgroundColor = .white
+        view.backgroundColor = 0x1E2227.color
         view.addSubview(templateListCV)
         
         templateListCV.snp.makeConstraints{
@@ -102,7 +102,7 @@ extension ModalVC{
 
 extension ModalVC: UICollectionViewDelegateFlowLayout {
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
-        return CGSize(width: 345.adjustedW, height: 70.adjustedW)
+        return CGSize(width: 352.adjustedW, height: 72.adjustedW)
     }
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumLineSpacingForSectionAt section: Int) -> CGFloat {

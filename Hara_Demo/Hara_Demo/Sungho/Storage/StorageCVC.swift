@@ -9,7 +9,7 @@ import UIKit
 import SnapKit
 import Then
 
-class WorryCVC: UICollectionViewCell {
+class StorageCVC: UICollectionViewCell {
     
     private let worryCell = UIView().then{
         $0.backgroundColor = .clear
@@ -45,7 +45,7 @@ class WorryCVC: UICollectionViewCell {
     }
 }
 
-extension WorryCVC{
+extension StorageCVC{
     
     // MARK: - Layout
     private func setLayout() {
