@@ -16,6 +16,7 @@ class WriteVC: UIViewController, TemplageTitleDelegate{
         self.templateTitle.text = templateTitle
     }
     
+    // MARK: - Properties
     private let writeModalVC = WriteModalVC()
     
     private let closeBtn = UIButton().then {
@@ -94,17 +95,79 @@ class WriteVC: UIViewController, TemplageTitleDelegate{
         $0.font = .systemFont(ofSize: 12.adjustedW, weight: .light)
     }
     
+    // pickerView 관련 코드
+    let pickerData = Array(1...30).map { String($0) }
+    
+    private let datePickerView = UIPickerView().then{
+        $0.backgroundColor = 0x1E2227.color
+        $0.layer.cornerRadius = 8
+    }
+    
+    // MARK: - Life Cycles
     override func viewDidLoad() {
         super.viewDidLoad()
         writeModalVC.sendTitleDelegate = self
+        datePickerView.delegate = self
+        datePickerView.dataSource = self
         setLayout()
         pressBtn()
     }
-    
+
     // MARK: - Functions
     private func pressBtn(){
         closeBtn.press { [self] in
-            self.dismiss(animated: true)
+            dismiss(animated: true)
+        }
+        
+        completeBtn.press { [self] in
+            let pickerVC = UIViewController()
+            
+            let firstLabel = UILabel().then{
+                $0.text = "이 고민을"
+                $0.font = .systemFont(ofSize: 20)
+                $0.textColor = .white
+            }
+            
+            let secondLabel = UILabel().then{
+                $0.text = "일 후까지 끝낼게요"
+                $0.font = .systemFont(ofSize: 20)
+                $0.textColor = .white
+            }
+            
+            pickerVC.view.backgroundColor = .black.withAlphaComponent(0.5)
+            pickerVC.view.addSubview(datePickerView)
+            datePickerView.addSubviews([firstLabel, secondLabel])
+            
+            datePickerView.snp.makeConstraints{
+                $0.width.equalTo(358.adjustedW)
+                $0.height.equalTo(448.adjustedW)
+                $0.center.equalToSuperview()
+            }
+            
+            firstLabel.snp.makeConstraints{
+                $0.leading.equalToSuperview().offset(32.adjustedW)
+                $0.centerY.equalToSuperview()
+            }
+            
+            secondLabel.snp.makeConstraints{
+                $0.trailing.equalToSuperview().offset(-32.adjustedW)
+                $0.centerY.equalToSuperview()
+            }
+            
+//            datePickerView.showsSelectionIndicator = false
+            // pickerView 애니메이션 설정
+            datePickerView.alpha = 0 /// pickerView를 초기에 보이지 않게 설정
+            ///
+            pickerVC.modalPresentationStyle = .overCurrentContext
+            present(pickerVC, animated: false, completion: { /// 애니메이션을 false로 설정
+                UIView.animate(withDuration: 0.5, animations: { /// 애니메이션 추가
+                    self.datePickerView.snp.updateConstraints {
+                        $0.center.equalToSuperview() /// pickerView를 중앙으로 이동
+                    }
+                    self.datePickerView.alpha = 1 /// pickerView가 서서히 보이게 설정
+                    pickerVC.view.layoutIfNeeded()
+                })
+            })
         }
         
         templateBtn.press {
@@ -210,10 +273,42 @@ extension WriteVC{
     }
 }
 
+// MARK: - UIPickerViewDelegate, UIPickerViewDataSource
+extension WriteVC: UIPickerViewDelegate, UIPickerViewDataSource{
+    
+    func numberOfComponents(in pickerView: UIPickerView) -> Int {
+        return 1
+    }
+    
+    func pickerView(_ pickerView: UIPickerView, numberOfRowsInComponent component: Int) -> Int {
+        return pickerData.count
+    }
+    
+    func pickerView(_ pickerView: UIPickerView, viewForRow row: Int, forComponent component: Int, reusing view: UIView?) -> UIView {
+        let customView = UIView()
+        
+        let numLabel = UILabel().then{
+            $0.text = pickerData[row]
+            $0.font = .systemFont(ofSize: 20)
+            $0.textColor = .white
+        }
+        
+        customView.addSubview(numLabel)
+        
+        numLabel.snp.makeConstraints{
+            $0.leading.equalToSuperview().offset(138.adjustedW)
+            $0.centerY.equalToSuperview()
+        }
+        
+        return customView
+    }
+}
+
+// MARK: - UITextField
 extension UITextField {
-  func addLeftPadding() {
-    let paddingView = UIView(frame: CGRect(x: 0, y: 0, width: 10, height: self.frame.height))
-    self.leftView = paddingView
-    self.leftViewMode = ViewMode.always
-  }
+    func addLeftPadding() {
+        let paddingView = UIView(frame: CGRect(x: 0, y: 0, width: 10, height: self.frame.height))
+        self.leftView = paddingView
+        self.leftViewMode = ViewMode.always
+    }
 }
