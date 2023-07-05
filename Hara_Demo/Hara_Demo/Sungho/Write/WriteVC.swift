@@ -96,12 +96,64 @@ class WriteVC: UIViewController, TemplageTitleDelegate{
     }
     
     // pickerView 관련 코드
+    let pickerVC = UIViewController()
     let pickerData = Array(1...30).map { String($0) }
     
     private let datePickerView = UIPickerView().then{
         $0.backgroundColor = 0x1E2227.color
         $0.layer.cornerRadius = 8
     }
+    
+    private let pickerViewTitle = UILabel().then{
+        $0.text = "이 고민, 언제까지 끝낼까요?"
+        $0.font = .systemFont(ofSize: 16, weight: .bold)
+        $0.textColor = 0xF6CE66.color
+    }
+    
+    private let firstLabel = UILabel().then{
+        $0.text = "이 고민을"
+        $0.font = .systemFont(ofSize: 20)
+        $0.textColor = .white
+    }
+    
+    private let secondLabel = UILabel().then{
+        $0.text = "일 후까지 끝낼게요"
+        $0.font = .systemFont(ofSize: 20)
+        $0.textColor = .white
+    }
+    
+    private let upperCover = UIView().then{
+        $0.backgroundColor = 0x1E2227.color
+    }
+    
+    private let lowerCover = UIView().then{
+        $0.backgroundColor = 0x1E2227.color
+    }
+    
+    private let completeWritingBtn = UIButton().then{
+        $0.backgroundColor = 0xB6BCC6.color
+        $0.titleLabel?.font = .systemFont(ofSize: 16.adjustedW, weight: .medium)
+        $0.setTitle("작성완료", for: .normal)
+        $0.setTitleColor(.black, for: .normal)
+        $0.layer.cornerRadius = 8
+    }
+    
+    private let noDeadlineBtn = UIButton().then{
+        $0.backgroundColor = .clear
+        $0.titleLabel?.font = .systemFont(ofSize: 14.adjustedW, weight: .medium)
+        
+        let title = "기한 설정하지 않기"
+        let titleAttributes: [NSAttributedString.Key: Any] = [
+            .font: UIFont.systemFont(ofSize: 14.adjustedW, weight: .medium),
+            .foregroundColor: 0xB9C4DA.color,
+            .underlineStyle: NSUnderlineStyle.single.rawValue,
+            .underlineColor: 0xB9C4DA.color
+        ]
+        
+        let attributedTitle = NSAttributedString(string: title, attributes: titleAttributes)
+        $0.setAttributedTitle(attributedTitle, for: .normal)
+    }
+    
     
     // MARK: - Life Cycles
     override func viewDidLoad() {
@@ -112,62 +164,15 @@ class WriteVC: UIViewController, TemplageTitleDelegate{
         setLayout()
         pressBtn()
     }
-
+    
     // MARK: - Functions
     private func pressBtn(){
         closeBtn.press { [self] in
             dismiss(animated: true)
         }
         
-        completeBtn.press { [self] in
-            let pickerVC = UIViewController()
-            
-            let firstLabel = UILabel().then{
-                $0.text = "이 고민을"
-                $0.font = .systemFont(ofSize: 20)
-                $0.textColor = .white
-            }
-            
-            let secondLabel = UILabel().then{
-                $0.text = "일 후까지 끝낼게요"
-                $0.font = .systemFont(ofSize: 20)
-                $0.textColor = .white
-            }
-            
-            pickerVC.view.backgroundColor = .black.withAlphaComponent(0.5)
-            pickerVC.view.addSubview(datePickerView)
-            datePickerView.addSubviews([firstLabel, secondLabel])
-            
-            datePickerView.snp.makeConstraints{
-                $0.width.equalTo(358.adjustedW)
-                $0.height.equalTo(448.adjustedW)
-                $0.center.equalToSuperview()
-            }
-            
-            firstLabel.snp.makeConstraints{
-                $0.leading.equalToSuperview().offset(32.adjustedW)
-                $0.centerY.equalToSuperview()
-            }
-            
-            secondLabel.snp.makeConstraints{
-                $0.trailing.equalToSuperview().offset(-32.adjustedW)
-                $0.centerY.equalToSuperview()
-            }
-            
-//            datePickerView.showsSelectionIndicator = false
-            // pickerView 애니메이션 설정
-            datePickerView.alpha = 0 /// pickerView를 초기에 보이지 않게 설정
-            ///
-            pickerVC.modalPresentationStyle = .overCurrentContext
-            present(pickerVC, animated: false, completion: { /// 애니메이션을 false로 설정
-                UIView.animate(withDuration: 0.5, animations: { /// 애니메이션 추가
-                    self.datePickerView.snp.updateConstraints {
-                        $0.center.equalToSuperview() /// pickerView를 중앙으로 이동
-                    }
-                    self.datePickerView.alpha = 1 /// pickerView가 서서히 보이게 설정
-                    pickerVC.view.layoutIfNeeded()
-                })
-            })
+        completeBtn.press {
+            self.setPickerViewLayout(pickVC: self.pickerVC)
         }
         
         templateBtn.press {
@@ -271,7 +276,78 @@ extension WriteVC{
             $0.centerX.equalToSuperview()
         }
     }
+    
+    private func setPickerViewLayout(pickVC: UIViewController) -> Void{
+        let pickerVC = UIViewController()
+        pickerVC.view.backgroundColor = .black.withAlphaComponent(0.5)
+        pickerVC.view.addSubview(datePickerView)
+        datePickerView.addSubviews([upperCover, pickerViewTitle, lowerCover, completeWritingBtn, noDeadlineBtn])
+        
+        upperCover.snp.makeConstraints{
+            $0.top.leading.trailing.equalToSuperview()
+            $0.height.equalTo(170)
+        }
+        
+        pickerViewTitle.snp.makeConstraints{
+            $0.top.equalToSuperview().offset(90.adjustedW)
+            $0.centerX.equalToSuperview()
+        }
+        
+        lowerCover.snp.makeConstraints{
+            $0.bottom.leading.trailing.equalToSuperview()
+            $0.height.equalTo(180)
+        }
+        
+        completeWritingBtn.snp.makeConstraints{
+            $0.width.equalTo(326.adjustedW)
+            $0.height.equalTo(52.adjustedW)
+            $0.centerX.equalToSuperview()
+            $0.bottom.equalToSuperview().offset(-90.adjustedW)
+        }
+        
+        noDeadlineBtn.snp.makeConstraints{
+            $0.width.equalTo(113.adjustedW)
+            $0.height.equalTo(21.adjustedW)
+            $0.centerX.equalToSuperview()
+            $0.bottom.equalToSuperview().offset(-56.adjustedW)
+        }
+        
+        /// pickerView 관련 화면
+        datePickerView.addSubviews([firstLabel, secondLabel])
+        
+        datePickerView.snp.makeConstraints{
+            $0.width.equalTo(358.adjustedW)
+            $0.height.equalTo(448.adjustedW)
+            $0.center.equalToSuperview()
+        }
+        
+        firstLabel.snp.makeConstraints{
+            $0.leading.equalToSuperview().offset(32.adjustedW)
+            $0.centerY.equalToSuperview()
+        }
+        
+        secondLabel.snp.makeConstraints{
+            $0.trailing.equalToSuperview().offset(-32.adjustedW)
+            $0.centerY.equalToSuperview()
+        }
+        
+        // pickerView 애니메이션 설정
+        datePickerView.alpha = 0 /// pickerView를 초기에 보이지 않게 설정
+        ///
+        pickerVC.modalPresentationStyle = .overCurrentContext
+        present(pickerVC, animated: false, completion: { /// 애니메이션을 false로 설정
+            UIView.animate(withDuration: 0.5, animations: { /// 애니메이션 추가
+                self.datePickerView.snp.updateConstraints {
+                    $0.center.equalToSuperview() /// pickerView를 중앙으로 이동
+                }
+                self.datePickerView.alpha = 1 /// pickerView가 서서히 보이게 설정
+                pickerVC.view.layoutIfNeeded()
+            })
+        })
+    }
 }
+
+
 
 // MARK: - UIPickerViewDelegate, UIPickerViewDataSource
 extension WriteVC: UIPickerViewDelegate, UIPickerViewDataSource{
