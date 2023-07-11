@@ -13,10 +13,10 @@ import Combine
 class StorageVC: UIViewController, RefreshListDelegate{
     
     // MARK: - Properties
-    var worryVM: ViewModel = ViewModel()
+    var worryVM: WorryViewModel = WorryViewModel()
     var modalVC = StorageModalVC()
     
-    var worryList: [WorryListModel] = []
+    var worryList: [WorryListPublisherModel] = []
     var disposalbleBag = Set<AnyCancellable>()
     
     private let titleLabel = UILabel().then{
@@ -58,6 +58,7 @@ class StorageVC: UIViewController, RefreshListDelegate{
         self.setBindings()
         self.registerCV()
         self.pressBtn()
+        print("printok?")
         
         // delegate 권한을 부여해줍니다.
         modalVC.refreshListDelegate = self
@@ -76,14 +77,14 @@ class StorageVC: UIViewController, RefreshListDelegate{
         DispatchQueue.main.async { [self] in
             
             /// modalVC가 dismiss될때 컬렉션뷰를 리로드해줍니다.
-            print(worryVM.worryList)
+            print(worryVM.worryListDummy)
             worryListCV.reloadData()
             print("reload 성공!")
         }
     }
     
-    func refreshList(templateTitle: String, list: [WorryListModel]) {
-        worryVM.worryList = list
+    func refreshList(templateTitle: String, list: [WorryListPublisherModel]) {
+        worryVM.worryListPublisher.value = list
         sortHeaderView.sortBtn.setTitle(templateTitle, for: .normal)
         print("delegate")
     }
@@ -121,7 +122,7 @@ extension StorageVC{
     /// 뷰모델의 데이터를 뷰컨의 리스트 데이터와 연동
     fileprivate func setBindings(){
         print("ViewController - setBindings()")
-        self.worryVM.$worryList.sink{ [weak self] (updatedList : [WorryListModel]) in
+        self.worryVM.worryListPublisher.sink{ [weak self] (updatedList : [WorryListPublisherModel]) in
             print("ViewController - updatedList.count: \(updatedList.count)")
             self?.worryList = updatedList
             self?.sortHeaderView.numLabel.text = "총 \(self!.worryList.count)개"

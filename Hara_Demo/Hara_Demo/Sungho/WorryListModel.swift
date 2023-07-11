@@ -7,10 +7,19 @@
 
 import UIKit
 
+// 서버통신용 model(codable)
 struct WorryListModel{
     let templateId: Int
     let templateTitle: String
-    let image: UIImage
     let title: String
-    let Date: String
+    let period: String
+}
+
+// View에 뿌려주기 위한 model
+struct WorryListPublisherModel{
+    let templateId: Int
+    let templateTitle: String
+    let title: String
+    let period: String
+    let image: UIImage
 }

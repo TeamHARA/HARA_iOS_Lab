@@ -86,9 +86,9 @@ extension StorageCVC{
         }
     }
     
-    func dataBind(model: WorryListModel) {
+    func dataBind(model: WorryListPublisherModel) {
         jewelImage.image = model.image
         worryTitle.text = model.title
-        worryDate.text = model.Date
+        worryDate.text = model.period
     }
 }
