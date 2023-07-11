@@ -86,8 +86,8 @@ extension StorageModalCVC{
         }
     }
     
-    func dataBind(model: TemplateListModel, indexPath: IndexPath) {
-        templateImage.image = model.templateImage
+    func dataBind(model: TemplateListPublisherModel, indexPath: IndexPath) {
+        templateImage.image = model.image
         templateTitle.text = model.templateTitle
         templateDetail.text = model.templateDetail
         
