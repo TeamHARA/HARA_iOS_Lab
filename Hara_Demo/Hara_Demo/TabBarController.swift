@@ -12,7 +12,8 @@ import SwiftyColor
 
 final class TabBarController: UITabBarController {
     
-    let HEIGHT_TAB_BAR : CGFloat = 96
+    // MARK: - Properties
+    let fixedHeight: CGFloat = 96
     
     // MARK: - View Life Cycle
     override func viewDidLoad() {
@@ -27,15 +28,13 @@ final class TabBarController: UITabBarController {
     override func viewDidLayoutSubviews() {
         super.viewDidLayoutSubviews()
         var tabFrame = self.tabBar.frame
-        tabFrame.size.height = HEIGHT_TAB_BAR
-        tabFrame.origin.y = self.view.frame.size.height - HEIGHT_TAB_BAR
+        tabFrame.size.height = fixedHeight
+        tabFrame.origin.y = self.view.frame.size.height - fixedHeight
         self.tabBar.frame = tabFrame
         
         // additionalSafeAreaInsets 설정
-        let tabBarHeightDifference = HEIGHT_TAB_BAR - 48 // 49는 기본 탭바 높이
-        if tabBarHeightDifference > 0 {
-            self.additionalSafeAreaInsets = UIEdgeInsets(top: 0, left: 0, bottom: -tabBarHeightDifference, right: 0)
-        }
+        /// ViewController가 잘려서 아래 여백을 좀 더 주려고 inset 변경
+        self.additionalSafeAreaInsets = UIEdgeInsets(top: 0, left: 0, bottom: -24, right: 0)
     }
     
     // TabBarItem 생성해 주는 메서드
@@ -43,6 +42,7 @@ final class TabBarController: UITabBarController {
         
         vc.tabBarItem = UITabBarItem(title: nil, image: UIImage(named: tabBarImg)?.withRenderingMode(.alwaysOriginal),
                                      selectedImage: UIImage(named: tabBarSelectedImg)?.withRenderingMode(.alwaysOriginal))
+        
         return vc
     }
     
@@ -69,7 +69,7 @@ final class TabBarController: UITabBarController {
     /// TabBar의 Style을 지정하는 메서드
     private func setTabBarStyle() {
         tabBar.backgroundColor = 0x2A2E33.color
-        tabBar.isTranslucent = false
+        tabBar.isTranslucent = false /// 투명 색 -> 반투명 색으로 바꿔주기 위해 false 로 설정(truetone color)
         
         // 탭바의 테두리를 설정합니다.
         tabBar.layer.borderWidth = 1

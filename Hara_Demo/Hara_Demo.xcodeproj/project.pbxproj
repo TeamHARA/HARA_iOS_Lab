@@ -12,12 +12,13 @@
 		854A6B042A52C83F000EBE1C /* WriteVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 854A6B032A52C83F000EBE1C /* WriteVC.swift */; };
 		854A6B062A52C8F6000EBE1C /* HomeVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 854A6B052A52C8F6000EBE1C /* HomeVC.swift */; };
 		854A6B092A52CA75000EBE1C /* SwiftyColor in Frameworks */ = {isa = PBXBuildFile; productRef = 854A6B082A52CA75000EBE1C /* SwiftyColor */; };
-		85825A0F29DA8FDC00850131 /* ViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 85825A0E29DA8FDC00850131 /* ViewModel.swift */; };
+		85825A0F29DA8FDC00850131 /* WorryViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 85825A0E29DA8FDC00850131 /* WorryViewModel.swift */; };
 		85825A1329DA901C00850131 /* WorryListModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 85825A1229DA901C00850131 /* WorryListModel.swift */; };
 		85825A1529DA902A00850131 /* WorryListHeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 85825A1429DA902A00850131 /* WorryListHeaderView.swift */; };
 		85825A1729DA903600850131 /* StorageVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 85825A1629DA903600850131 /* StorageVC.swift */; };
 		85825A1929DA904000850131 /* StorageCVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 85825A1829DA904000850131 /* StorageCVC.swift */; };
 		85825A1C29DA905A00850131 /* TemplateListModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 85825A1B29DA905A00850131 /* TemplateListModel.swift */; };
+		85887D862A5CF97E00F7FB21 /* ArchiveTemplateViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 85887D852A5CF97E00F7FB21 /* ArchiveTemplateViewModel.swift */; };
 		85B5BE862A533BF00057CA2E /* TemplateDetailModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 85B5BE852A533BF00057CA2E /* TemplateDetailModel.swift */; };
 		85FA24EF29DA908900E5B023 /* StorageModalVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 85FA24EE29DA908900E5B023 /* StorageModalVC.swift */; };
 		85FA24F129DA909700E5B023 /* StorageModalCVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 85FA24F029DA909700E5B023 /* StorageModalCVC.swift */; };
@@ -53,12 +54,13 @@
 		8523A4F42A532F7B00F03A51 /* WriteModalCVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WriteModalCVC.swift; sourceTree = "<group>"; };
 		854A6B032A52C83F000EBE1C /* WriteVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WriteVC.swift; sourceTree = "<group>"; };
 		854A6B052A52C8F6000EBE1C /* HomeVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeVC.swift; sourceTree = "<group>"; };
-		85825A0E29DA8FDC00850131 /* ViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewModel.swift; sourceTree = "<group>"; };
+		85825A0E29DA8FDC00850131 /* WorryViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WorryViewModel.swift; sourceTree = "<group>"; };
 		85825A1229DA901C00850131 /* WorryListModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WorryListModel.swift; sourceTree = "<group>"; };
 		85825A1429DA902A00850131 /* WorryListHeaderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WorryListHeaderView.swift; sourceTree = "<group>"; };
 		85825A1629DA903600850131 /* StorageVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StorageVC.swift; sourceTree = "<group>"; };
 		85825A1829DA904000850131 /* StorageCVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StorageCVC.swift; sourceTree = "<group>"; };
 		85825A1B29DA905A00850131 /* TemplateListModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TemplateListModel.swift; sourceTree = "<group>"; };
+		85887D852A5CF97E00F7FB21 /* ArchiveTemplateViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ArchiveTemplateViewModel.swift; sourceTree = "<group>"; };
 		85B5BE852A533BF00057CA2E /* TemplateDetailModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TemplateDetailModel.swift; sourceTree = "<group>"; };
 		85FA24EE29DA908900E5B023 /* StorageModalVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StorageModalVC.swift; sourceTree = "<group>"; };
 		85FA24F029DA909700E5B023 /* StorageModalCVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StorageModalCVC.swift; sourceTree = "<group>"; };
@@ -124,7 +126,8 @@
 		85825A1029DA8FE100850131 /* ViewModel */ = {
 			isa = PBXGroup;
 			children = (
-				85825A0E29DA8FDC00850131 /* ViewModel.swift */,
+				85825A0E29DA8FDC00850131 /* WorryViewModel.swift */,
+				85887D852A5CF97E00F7FB21 /* ArchiveTemplateViewModel.swift */,
 			);
 			path = ViewModel;
 			sourceTree = "<group>";
@@ -343,7 +346,8 @@
 				85825A1C29DA905A00850131 /* TemplateListModel.swift in Sources */,
 				8523A4F32A532E8C00F03A51 /* WriteModalVC.swift in Sources */,
 				E7864BB529D948120006FA18 /* NSObject+.swift in Sources */,
-				85825A0F29DA8FDC00850131 /* ViewModel.swift in Sources */,
+				85825A0F29DA8FDC00850131 /* WorryViewModel.swift in Sources */,
+				85887D862A5CF97E00F7FB21 /* ArchiveTemplateViewModel.swift in Sources */,
 				85B5BE862A533BF00057CA2E /* TemplateDetailModel.swift in Sources */,
 				85FA24EF29DA908900E5B023 /* StorageModalVC.swift in Sources */,
 				E7864BC129D948120006FA18 /* Adjusted+.swift in Sources */,
