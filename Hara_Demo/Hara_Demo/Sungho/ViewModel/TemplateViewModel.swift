@@ -8,7 +8,7 @@
 import UIKit
 import Combine
 
-class ArchiveTemplateViewModel{
+class TemplateViewModel{
     
     var IdtoImgTrueDict: [Int: String] = [0: "gem_pink_s_on", 1: "gem_pink_s_on", 2: "gem_orange_s_on", 3: "gem_blue_s_on", 4: "gemstone_green_s_on", 5: "gem_yellow_s_on", 6: "gem_red_s_on"]
     
@@ -38,7 +38,7 @@ class ArchiveTemplateViewModel{
 }
 
 // MARK: - Functions
-extension ArchiveTemplateViewModel{
+extension TemplateViewModel{
     private func convertIdtoImg(){
         templateListDummy.forEach {
             if $0.hasUsed == true{

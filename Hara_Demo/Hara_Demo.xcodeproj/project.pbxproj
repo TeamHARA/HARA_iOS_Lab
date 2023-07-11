@@ -18,7 +18,7 @@
 		85825A1729DA903600850131 /* StorageVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 85825A1629DA903600850131 /* StorageVC.swift */; };
 		85825A1929DA904000850131 /* StorageCVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 85825A1829DA904000850131 /* StorageCVC.swift */; };
 		85825A1C29DA905A00850131 /* TemplateListModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 85825A1B29DA905A00850131 /* TemplateListModel.swift */; };
-		85887D862A5CF97E00F7FB21 /* ArchiveTemplateViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 85887D852A5CF97E00F7FB21 /* ArchiveTemplateViewModel.swift */; };
+		85887D862A5CF97E00F7FB21 /* TemplateViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 85887D852A5CF97E00F7FB21 /* TemplateViewModel.swift */; };
 		85B5BE862A533BF00057CA2E /* TemplateDetailModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 85B5BE852A533BF00057CA2E /* TemplateDetailModel.swift */; };
 		85FA24EF29DA908900E5B023 /* StorageModalVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 85FA24EE29DA908900E5B023 /* StorageModalVC.swift */; };
 		85FA24F129DA909700E5B023 /* StorageModalCVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 85FA24F029DA909700E5B023 /* StorageModalCVC.swift */; };
@@ -60,7 +60,7 @@
 		85825A1629DA903600850131 /* StorageVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StorageVC.swift; sourceTree = "<group>"; };
 		85825A1829DA904000850131 /* StorageCVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StorageCVC.swift; sourceTree = "<group>"; };
 		85825A1B29DA905A00850131 /* TemplateListModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TemplateListModel.swift; sourceTree = "<group>"; };
-		85887D852A5CF97E00F7FB21 /* ArchiveTemplateViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ArchiveTemplateViewModel.swift; sourceTree = "<group>"; };
+		85887D852A5CF97E00F7FB21 /* TemplateViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TemplateViewModel.swift; sourceTree = "<group>"; };
 		85B5BE852A533BF00057CA2E /* TemplateDetailModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TemplateDetailModel.swift; sourceTree = "<group>"; };
 		85FA24EE29DA908900E5B023 /* StorageModalVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StorageModalVC.swift; sourceTree = "<group>"; };
 		85FA24F029DA909700E5B023 /* StorageModalCVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StorageModalCVC.swift; sourceTree = "<group>"; };
@@ -127,7 +127,7 @@
 			isa = PBXGroup;
 			children = (
 				85825A0E29DA8FDC00850131 /* WorryViewModel.swift */,
-				85887D852A5CF97E00F7FB21 /* ArchiveTemplateViewModel.swift */,
+				85887D852A5CF97E00F7FB21 /* TemplateViewModel.swift */,
 			);
 			path = ViewModel;
 			sourceTree = "<group>";
@@ -347,7 +347,7 @@
 				8523A4F32A532E8C00F03A51 /* WriteModalVC.swift in Sources */,
 				E7864BB529D948120006FA18 /* NSObject+.swift in Sources */,
 				85825A0F29DA8FDC00850131 /* WorryViewModel.swift in Sources */,
-				85887D862A5CF97E00F7FB21 /* ArchiveTemplateViewModel.swift in Sources */,
+				85887D862A5CF97E00F7FB21 /* TemplateViewModel.swift in Sources */,
 				85B5BE862A533BF00057CA2E /* TemplateDetailModel.swift in Sources */,
 				85FA24EF29DA908900E5B023 /* StorageModalVC.swift in Sources */,
 				E7864BC129D948120006FA18 /* Adjusted+.swift in Sources */,

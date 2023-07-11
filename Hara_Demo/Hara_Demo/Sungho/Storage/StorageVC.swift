@@ -101,17 +101,11 @@ class StorageVC: UIViewController, RefreshListDelegate{
             
             if let sheet = self.modalVC.sheetPresentationController {
                 
-                /// 지원할 크기 지정
-                /// 크기 늘리고 싶으면 뒤에 ", .large()" 추가
-                /// 줄이려면 .medium()
+                /// 지원할 크기 지정 .large() 혹은 .medium()
                 sheet.detents = [.large()]
                 
                 /// 시트 상단에 그래버 표시 (기본 값은 false)
                 sheet.prefersGrabberVisible = true
-                
-                /// 뒤 배경 흐리게 제거 (기본 값은 모든 크기에서 배경 흐리게 됨)
-                /// 배경 흐리게 할 시에는 sheet가 올라왔을 때 배경 클릭해도 sheet 안 사라짐
-                //                sheet.largestUndimmedDetentIdentifier = .medium
             }
             self.present(self.modalVC, animated: true)
         }

@@ -17,7 +17,7 @@ protocol RefreshListDelegate: AnyObject {
 class StorageModalVC: UIViewController {
     
     // MARK: - Properties
-    var templateVM: ArchiveTemplateViewModel = ArchiveTemplateViewModel()
+    var templateVM: TemplateViewModel = TemplateViewModel()
     var worryVM: WorryViewModel = WorryViewModel()
     
     var templateList: [TemplateListPublisherModel] = []
